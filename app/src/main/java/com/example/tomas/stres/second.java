@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.net.wifi.WifiManager;
 
+import java.util.Date;
 import java.util.EmptyStackException;
 import java.util.List;
 
@@ -76,6 +77,8 @@ public class second extends AppCompatActivity {
                     System.out.println(((EditText) findViewById(R.id.editText2)).getText().toString()); //diasTlak
                     System.out.println(((EditText) findViewById(R.id.editText3)).getText().toString()); //tep
                     System.out.println(((EditText) findViewById(R.id.editText6)).getText().toString()); //zataz
+                    Date date = new Date();
+                    System.out.println(date);
 
                 }
             }
