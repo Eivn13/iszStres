@@ -22,6 +22,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Systolicky tlak"
@@ -37,6 +38,7 @@
                     android:inputType="number" />
 
                 <TextView
+                    android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Diastolicky tlak"
@@ -52,6 +54,7 @@
                     android:inputType="number" />
 
                 <TextView
+                    android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tep"
@@ -67,6 +70,7 @@
                     android:inputType="number" />
 
                 <TextView
+                    android:id="@+id/textView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Citite nejake subjektivne potiaze?"
@@ -74,19 +78,31 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
-                <CheckBox
+                <RadioGroup
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ano"
-                    android:textAlignment="center" />
+                    android:layout_height="match_parent" >
 
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nie"
-                    android:textAlignment="center" />
+                    <RadioButton
+                        android:id="@+id/radioButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="Áno"
+                        android:textAlignment="center" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="Nie"
+                        android:textAlignment="center" />
+                </RadioGroup>
 
                 <TextView
+                    android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ake aktivity rad robite ?"
@@ -95,36 +111,42 @@
                     android:textSize="18sp" />
 
                 <CheckBox
+                    android:id="@+id/checkBox6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sport"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/checkBox7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Knihy"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/checkBox8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Priatelia"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/checkBox9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Filmy"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/checkBox10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Meditacia"
                     android:textAlignment="center" />
 
                 <TextView
+                    android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mate problemy v praci / skole ?"
@@ -132,19 +154,29 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
-                <CheckBox
+                <RadioGroup
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ano"
-                    android:textAlignment="center" />
+                    android:layout_height="match_parent" >
 
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nie"
-                    android:textAlignment="center" />
+                    <RadioButton
+                        android:id="@+id/radioButton7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="Nie" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:text="Áno" />
+                </RadioGroup>
 
                 <TextView
+                    android:id="@+id/textView12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Kedy ste naposledy citili vacsiu zataz?"
@@ -160,15 +192,10 @@
                     android:inputType="textMultiLine" />
 
                 <Button
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="36dp"
-                    android:layout_marginStart="148dp"
-                    android:background="@android:color/holo_blue_dark"
-                    android:text="Odoslat"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:text="Odoslat" />
             </LinearLayout>
         </RelativeLayout>
 
