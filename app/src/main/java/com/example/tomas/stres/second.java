@@ -63,7 +63,7 @@ public class second extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Nenaslo ziadnu wifi.", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        String data = wifiScanList.get(0).toString();
+                        String data = wifiScanList.get(0).toString(); //caka na prerobenie, treba DEBUG FIRST
                         Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show(); //skusobny vypis, este nepretestovane
                     }
                     //parse dat a posielanie dat
