@@ -55,6 +55,7 @@ public class second extends AppCompatActivity {
                 {
                     //odosli();
                     mainWifiObj = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+                    mainWifiObj.startScan();
                     WifiScanReceiver wifiReceiver = new WifiScanReceiver();
                     registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
                     List<ScanResult> wifiScanList = mainWifiObj.getScanResults();
