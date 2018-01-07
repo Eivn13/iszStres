@@ -64,8 +64,19 @@ public class second extends AppCompatActivity {
                     }
                     else {
                         String data = wifiScanList.get(0).toString();
-                        Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show(); //skusobny vypis, este nepretestovane
                     }
+                    //parse dat a posielanie dat
+                    //viac menej staci poslat serveru views od nic po 6 aka findViewById(R.id.editText) to findViewById(R.id.editText6) okrem jednotky
+                    Intent intent = getIntent();
+                    System.out.println(intent.getStringExtra("vek")); //vek
+                    System.out.println(intent.getStringExtra("pohlavie")); //pohlavie
+                    System.out.println(intent.getStringExtra("okres")); //okres
+                    System.out.println(((EditText) findViewById(R.id.editText)).getText().toString()); //sysTlak
+                    System.out.println(((EditText) findViewById(R.id.editText2)).getText().toString()); //diasTlak
+                    System.out.println(((EditText) findViewById(R.id.editText3)).getText().toString()); //tep
+                    System.out.println(((EditText) findViewById(R.id.editText6)).getText().toString()); //zataz
+
                 }
             }
         });

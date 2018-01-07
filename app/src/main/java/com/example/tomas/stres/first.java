@@ -14,12 +14,14 @@ public class first extends AppCompatActivity {
     public Button btn1;
     public EditText vek;
     public EditText okres;
-
+    public String pohlavie;
+    public CheckBox checkBox;
 
 
     public void init(){
         vek = (EditText)findViewById(R.id.editText4);
         okres= (EditText)findViewById(R.id.editText5);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
         btn1 = (Button)findViewById(R.id.button);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +38,12 @@ public class first extends AppCompatActivity {
                 else
                 {
                     Intent toy = new Intent(first.this,second.class);
+                    pohlavie = "Žena";
+                    if(checkBox.isChecked())
+                        pohlavie = "Muž";
+                    toy.putExtra("vek", vek.getText().toString());
+                    toy.putExtra("pohlavie", pohlavie);
+                    toy.putExtra("okres", okres.getText().toString());
                     startActivity(toy);
                 }
             }
