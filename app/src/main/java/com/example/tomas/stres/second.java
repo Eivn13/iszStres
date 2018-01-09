@@ -127,7 +127,7 @@ public class second extends AppCompatActivity {
                     System.out.println(datum + " " + cas);
                     //posielanie
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                    String url = "www.ecomamk.sk/new_predict.php";
+                    String url = "http://www.ecomamk.sk/new_predict.php";
                     StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -141,15 +141,15 @@ public class second extends AppCompatActivity {
                             Log.i("My error",""+error);
                             error.printStackTrace();
                         }
-                    })/*
+                    })
                     {
                         @Override
                         public Map<String, String> getHeaders() throws AuthFailureError {
-                            HashMap<String, String> params = new HashMap<String, String>();
-
+                            HashMap<String, String> header = new HashMap<String, String>();
+                            header.put("name", "Domino");
+                            return header;
                         }
-                    }*/
-                    {
+
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
 
