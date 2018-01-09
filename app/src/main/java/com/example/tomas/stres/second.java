@@ -40,6 +40,7 @@ public class second extends AppCompatActivity {
     public String potiaze;
     public String aktivity;
     public String problemy;
+    public String numOfWifi;
     public Button btn2;
     public RadioButton radioButton3;
     public RadioButton radioButton5;
@@ -54,6 +55,7 @@ public class second extends AppCompatActivity {
         radioButton3 = (RadioButton) findViewById(R.id.radioButton3);
         radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
         aktivity = "";
+        numOfWifi = "0";
         btn2 = (Button)findViewById(R.id.button2);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +88,7 @@ public class second extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Nenaslo ziadnu wifi.", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        int numOfWifi = wifiScanList.size(); //TOTO sa bude posielat na server
+                        numOfWifi = String.valueOf(wifiScanList.size()); //TOTO sa bude posielat na server
                         String data = "Pocet wifi v blizkosti je " + numOfWifi;
                         Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
                     }
@@ -164,6 +166,7 @@ public class second extends AppCompatActivity {
                             map.put("aktivity", aktivity);
                             map.put("datum", datum);
                             map.put("cas", cas);
+                            map.put("wifi", numOfWifi);
                             return map;
                         }
                     };
