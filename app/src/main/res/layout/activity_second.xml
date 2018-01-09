@@ -164,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
-                        android:text="Nie" />
+                        android:text="Áno" />
 
                     <RadioButton
                         android:id="@+id/radioButton5"
@@ -172,7 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
-                        android:text="Áno" />
+                        android:text="Nie" />
                 </RadioGroup>
 
                 <TextView

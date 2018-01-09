@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.Date;
@@ -17,13 +18,13 @@ public class first extends AppCompatActivity {
     public EditText vek;
     public EditText okres;
     public String pohlavie;
-    public CheckBox checkBox;
+    public RadioButton radioButton;
 
 
     public void init(){
         vek = (EditText)findViewById(R.id.editText4);
         okres= (EditText)findViewById(R.id.editText5);
-        checkBox = (CheckBox) findViewById(R.id.checkBox);
+        radioButton = (RadioButton) findViewById(R.id.radioButton);
         btn1 = (Button)findViewById(R.id.button);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +42,7 @@ public class first extends AppCompatActivity {
                 {
                     Intent toy = new Intent(first.this,second.class);
                     pohlavie = "Žena";
-                    if(checkBox.isChecked())
+                    if(radioButton.isChecked())
                         pohlavie = "Muž";
                     toy.putExtra("vek", vek.getText().toString());
                     toy.putExtra("pohlavie", pohlavie);
