@@ -14,9 +14,21 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 import android.net.wifi.WifiManager;
 
+import android.util.Log;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class second extends AppCompatActivity {
 
@@ -65,7 +77,7 @@ public class second extends AppCompatActivity {
                 else
                 {
                     //wifi
-                    mainWifiObj = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+                    mainWifiObj = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE); //pridane getApplicationContext
                     mainWifiObj.startScan();
                     WifiScanReceiver wifiReceiver = new WifiScanReceiver();
                     registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
@@ -76,7 +88,7 @@ public class second extends AppCompatActivity {
                     else {
                         int numOfWifi = wifiScanList.size(); //TOTO sa bude posielat na server
                         String data = "Pocet wifi v blizkosti je " + numOfWifi;
-                        Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show(); //skusobny vypis, este nepretestovane
+                        Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
                     }
                     //parse dat
                     potiaze = "Áno";
@@ -86,7 +98,7 @@ public class second extends AppCompatActivity {
                     if(radioButton5.isChecked())
                         problemy = "Nie";
                     aktivity = "";
-                    List<CheckBox> aktivities = new ArrayList<CheckBox>();
+                    List<CheckBox> aktivities = new ArrayList<>();
                     aktivities.add((CheckBox) findViewById(R.id.checkBox6));
                     aktivities.add((CheckBox) findViewById(R.id.checkBox7));
                     aktivities.add((CheckBox) findViewById(R.id.checkBox8));
@@ -94,11 +106,11 @@ public class second extends AppCompatActivity {
                     aktivities.add((CheckBox) findViewById(R.id.checkBox10));
                     for(CheckBox aktivit : aktivities){
                         if(aktivit.isChecked()){
-                            aktivity = aktivity + "" + aktivit.getText().toString() + " ";
+                            aktivity = aktivity + aktivit.getText().toString() + " ";
                         }
                     }
-                    //posielanie dat
-                    Intent intent = getIntent();
+                    //parse dat
+                    final Intent intent = getIntent();
                     System.out.println(intent.getStringExtra("vek")); //vek
                     System.out.println(intent.getStringExtra("pohlavie")); //pohlavie
                     System.out.println(intent.getStringExtra("okres")); //okres
@@ -107,8 +119,55 @@ public class second extends AppCompatActivity {
                     System.out.println(((EditText) findViewById(R.id.editText3)).getText().toString()); //tep
                     System.out.println(((EditText) findViewById(R.id.editText6)).getText().toString()); //
                     System.out.println(aktivity);
-                    Date date = new Date();
+                    String date = new Date().toString();
                     System.out.println(date);
+                    String[] parts = date.split(" ");
+                    final String cas = parts[3];
+                    final String datum = parts[2] + " " + parts[1] + " " + parts[5];
+                    System.out.println(datum + " " + cas);
+                    //posielanie
+                    RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                    String url = "www.ecomamk.sk/new_predict.php";
+                    StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.i("My success",""+response); //whatever
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                            Log.i("My error",""+error);
+                            error.printStackTrace();
+                        }
+                    })/*
+                    {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> params = new HashMap<String, String>();
+
+                        }
+                    }*/
+                    {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+
+                            Map<String,String> map = new HashMap<String, String>();
+                            map.put("vek", intent.getStringExtra("vek"));
+                            map.put("pohlavie", intent.getStringExtra("pohlavie"));
+                            map.put("okres", intent.getStringExtra("okres"));
+                            map.put("sysTlak", ((EditText) findViewById(R.id.editText)).getText().toString());
+                            map.put("diasTlak", ((EditText) findViewById(R.id.editText2)).getText().toString());
+                            map.put("tep", ((EditText) findViewById(R.id.editText3)).getText().toString());
+                            map.put("zataz", ((EditText) findViewById(R.id.editText6)).getText().toString());
+                            map.put("aktivity", aktivity);
+                            map.put("datum", datum);
+                            map.put("cas", cas);
+                            return map;
+                        }
+                    };
+                    queue.add(request);
 
                 }
             }
